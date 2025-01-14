@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+title: MMAR Metamodeling Platform
+message: If you use this software please cite it
+type: software
+version: 1.0.0
+date-released: 2025-01-08
+identifiers:
+  - type: url
+    value: 'https://github.com/MM-AR/mmar'
+authors:
+  - family-names: Muff
+    given-names: Fabian
+    email: Fabian.Muff@unifr.ch
+    affiliation: University of Fribourg
+    orcid: 'https://orcid.org/0000-0002-7283-6603'
+  - given-names: Daniel
+    family-names: Borcard
+    email: Daniel.Borcard@unifr.ch
+    affiliation: University of Fribourg
+    orcid: 'https://orcid.org/0000-0001-7211-4793'
+  - given-names: Hans-Georg
+    family-names: Fill
+    email: hans-georg.fill@unifr.ch
+    affiliation: University of Fribourg
+    orcid: 'https://orcid.org/0000-0001-5076-5341'
