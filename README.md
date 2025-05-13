@@ -109,6 +109,7 @@ THREE.js 3D framework. The purpose of the client application is to create visual
 initializes the data structure in a global context and creates and stores metamodels and instance models locally in that data structure. The visualization of these instances in the M2AR Modeler is independent of the instances of the Global Shared Datastructure. Thus, it should be noted that the M2AR Modeler always instantiates two instances for each new instance of the Global Shared Datastructure. (1) The instance of the data structure itself, and (2) a graphical THREE.js instance of the 3D representation according to the VizRep definition defined in the metamodel (see [VizRep](https://github.com/MM-AR/mmar/wiki/VizRep)). The Figure below shows a screenshot of the Modeling Client and its components.
 <div> <br> </div>
 <img src="screenshots/instance_modeling_client_screenshot.png"  width="600" style="display: block; margin: 0 auto;">
+- VizRep Client (https://github.com/MM-AR/mmar-vizrep-client): This is the tool for designing the visual representation of Classes, Relationclasses, and Ports that can be used in the modeling platform.
 <div> <br> </div>
 
 
@@ -161,6 +162,7 @@ Contributions must be documented to be merged into the project. If you contribut
 - Meta2Model: [Fabian Muff](https://www.unifr.ch/inf/digits/en/group/team/fabian-muff.html) | [Hans-Georg Fill](https://www.unifr.ch/inf/digits/en/group/team/fill.html) | [Daniel Borcard](https://www.unifr.ch/inf/digits/en/group/team/daniel-borcard.html)
 - Modeling Client: [Fabian Muff](https://www.unifr.ch/inf/digits/en/group/team/fabian-muff.html)
 - Metamodeling Client: [Daniel Borcard](https://www.unifr.ch/inf/digits/en/group/team/daniel-borcard.html)
+- VizRep Client: [Fabian Muff](https://www.unifr.ch/inf/digits/en/group/team/fabian-muff.html)
 - API: [Daniel Borcard](https://www.unifr.ch/inf/digits/en/group/team/daniel-borcard.html) | [Gunakar Challa](https://www.unifr.ch/inf/digits/en/group/team/gunakar-challa.html) | [Fabian Muff](https://www.unifr.ch/inf/digits/en/group/team/fabian-muff.html) 
 - GlobalSharedDatastructure: [Fabian Muff](https://www.unifr.ch/inf/digits/en/group/team/fabian-muff.html) | [Daniel Borcard](https://www.unifr.ch/inf/digits/en/group/team/daniel-borcard.html)
 - Docker Installation: [Fabian Muff](https://www.unifr.ch/inf/digits/en/group/team/fabian-muff.html)
