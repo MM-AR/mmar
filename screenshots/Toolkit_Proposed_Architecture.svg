@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1420 1080" width="1420" height="1080" font-family="Times New Roman, Georgia, serif">
+  <defs>
+    <marker id="big" markerWidth="4" markerHeight="4" refX="3.2" refY="2" orient="auto">
+      <path d="M0,0 L4,2 L0,4 z" fill="#000"/>
+    </marker>
+    <marker id="bigs" markerWidth="4" markerHeight="4" refX="0.8" refY="2" orient="auto">
+      <path d="M4,0 L0,2 L4,4 z" fill="#000"/>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1420" height="1080" fill="#ffffff"/>
+
+  <!-- ============ Metamodeling Client ============ -->
+  <rect x="70" y="25" width="470" height="350" fill="#8a8a8a" stroke="#000" stroke-width="5"/>
+  <text x="305" y="82" text-anchor="middle" font-size="34">Metamodeling Client</text>
+  <rect x="110" y="110" width="390" height="70" fill="#f2f2f2" stroke="#000" stroke-width="3"/>
+  <text x="305" y="140" text-anchor="middle" font-size="24">Metamodel Design</text>
+  <text x="305" y="168" text-anchor="middle" font-size="24">Functions</text>
+  <rect x="110" y="200" width="390" height="55" fill="#f2f2f2" stroke="#000" stroke-width="3"/>
+  <text x="305" y="236" text-anchor="middle" font-size="24">VizRep Design Functions</text>
+  <rect x="110" y="275" width="390" height="70" fill="#f2f2f2" stroke="#000" stroke-width="3"/>
+  <text x="305" y="305" text-anchor="middle" font-size="24">Mechanism &amp; Algorithms</text>
+  <text x="305" y="333" text-anchor="middle" font-size="24">Design Functions</text>
+
+  <!-- ============ Modeling Client ============ -->
+  <rect x="600" y="25" width="730" height="470" fill="#8a8a8a" stroke="#000" stroke-width="5"/>
+  <text x="965" y="82" text-anchor="middle" font-size="34">Modeling Client</text>
+  <rect x="630" y="110" width="330" height="62" fill="#f2f2f2" stroke="#000" stroke-width="3"/>
+  <text x="795" y="149" text-anchor="middle" font-size="24">2D Modeling</text>
+  <rect x="985" y="110" width="330" height="62" fill="#f2f2f2" stroke="#000" stroke-width="3"/>
+  <text x="1150" y="149" text-anchor="middle" font-size="24">Sensor Access</text>
+  <rect x="630" y="185" width="330" height="62" fill="#f2f2f2" stroke="#000" stroke-width="3"/>
+  <text x="795" y="224" text-anchor="middle" font-size="24">3D Modeling</text>
+  <rect x="985" y="185" width="330" height="62" fill="#f2f2f2" stroke="#000" stroke-width="3"/>
+  <text x="1150" y="212" text-anchor="middle" font-size="24">Model Execution</text>
+  <text x="1150" y="238" text-anchor="middle" font-size="24">Engine</text>
+  <rect x="630" y="260" width="330" height="62" fill="#f2f2f2" stroke="#000" stroke-width="3"/>
+  <text x="795" y="287" text-anchor="middle" font-size="24">Run Mechanisms &amp;</text>
+  <text x="795" y="313" text-anchor="middle" font-size="24">Algorithms</text>
+  <rect x="985" y="260" width="330" height="62" fill="#f2f2f2" stroke="#000" stroke-width="3"/>
+  <text x="1150" y="287" text-anchor="middle" font-size="24">Detection and</text>
+  <text x="1150" y="313" text-anchor="middle" font-size="24">Tracking</text>
+  <rect x="630" y="335" width="330" height="62" fill="#f2f2f2" stroke="#000" stroke-width="3"/>
+  <text x="795" y="374" text-anchor="middle" font-size="24">Immersive Interaction</text>
+  <rect x="985" y="335" width="330" height="62" fill="#f2f2f2" stroke="#000" stroke-width="3"/>
+  <text x="1150" y="374" text-anchor="middle" font-size="24">Desktop Interaction</text>
+  <rect x="630" y="410" width="685" height="58" fill="#dce9f5" stroke="#000" stroke-width="3"/>
+  <text x="972" y="448" text-anchor="middle" font-size="24">Collaborative Modeling</text>
+
+  <!-- ============ API Module ============ -->
+  <rect x="70" y="600" width="420" height="400" fill="#d9d9d9" stroke="#000" stroke-width="5"/>
+  <text x="280" y="658" text-anchor="middle" font-size="32">API Module</text>
+  <rect x="100" y="680" width="360" height="50" fill="#f2f2f2" stroke="#000" stroke-width="3"/>
+  <text x="280" y="713" text-anchor="middle" font-size="23">Authentication</text>
+  <rect x="100" y="742" width="360" height="50" fill="#f2f2f2" stroke="#000" stroke-width="3"/>
+  <text x="280" y="775" text-anchor="middle" font-size="23">Route Exposition</text>
+  <rect x="100" y="804" width="360" height="50" fill="#f2f2f2" stroke="#000" stroke-width="3"/>
+  <text x="280" y="837" text-anchor="middle" font-size="23">Controlling</text>
+  <rect x="100" y="866" width="360" height="50" fill="#f2f2f2" stroke="#000" stroke-width="3"/>
+  <text x="280" y="899" text-anchor="middle" font-size="23">Additional Rule Checking</text>
+  <rect x="100" y="928" width="360" height="50" fill="#dce9f5" stroke="#000" stroke-width="3"/>
+  <text x="280" y="961" text-anchor="middle" font-size="23">Scene Access Control</text>
+
+  <!-- ============ Sync Module ============ -->
+  <rect x="610" y="600" width="330" height="270" fill="#d9d9d9" stroke="#000" stroke-width="5"/>
+  <text x="775" y="658" text-anchor="middle" font-size="32">Sync Module</text>
+  <rect x="640" y="690" width="270" height="72" fill="#dce9f5" stroke="#000" stroke-width="3"/>
+  <text x="775" y="720" text-anchor="middle" font-size="23">Real-Time</text>
+  <text x="775" y="748" text-anchor="middle" font-size="23">Synchronization</text>
+  <rect x="640" y="780" width="270" height="60" fill="#dce9f5" stroke="#000" stroke-width="3"/>
+  <text x="775" y="818" text-anchor="middle" font-size="23">Access Gating</text>
+
+  <!-- ============ Global Shared Datastructure ============ -->
+  <rect x="1020" y="600" width="310" height="400" fill="#d9d9d9" stroke="#000" stroke-width="5"/>
+  <text x="1175" y="656" text-anchor="middle" font-size="30">Global Shared</text>
+  <text x="1175" y="693" text-anchor="middle" font-size="30">Datastructure</text>
+  <rect x="1050" y="730" width="250" height="60" fill="#f2f2f2" stroke="#000" stroke-width="3"/>
+  <text x="1175" y="768" text-anchor="middle" font-size="23">Meta-Structure</text>
+  <rect x="1050" y="810" width="250" height="60" fill="#f2f2f2" stroke="#000" stroke-width="3"/>
+  <text x="1175" y="848" text-anchor="middle" font-size="23">Instance-Structure</text>
+
+  <!-- ============ Database ============ -->
+  <path d="M585,928 v45 a115,22 0 0 0 230,0 v-45 z" fill="#f2f2f2" stroke="#000" stroke-width="4"/>
+  <ellipse cx="700" cy="928" rx="115" ry="22" fill="#f2f2f2" stroke="#000" stroke-width="4"/>
+  <text x="700" y="952" text-anchor="middle" font-size="24">Database</text>
+
+  <!-- ============ Arrows ============ -->
+  <!-- Metamodeling Client -> API : Access -->
+  <path d="M230,378 L230,593" stroke="#000" stroke-width="11" fill="none" marker-end="url(#big)"/>
+  <text x="252" y="480" font-size="26">Access</text>
+
+  <!-- Modeling Client -> API : Access -->
+  <path d="M640,498 L640,545 L370,545 L370,593" stroke="#000" stroke-width="11" fill="none" marker-end="url(#big)"/>
+  <text x="420" y="533" font-size="26">Access</text>
+
+  <!-- Modeling Client <-> Sync Module : real-time synchronization -->
+  <path d="M800,500 L800,593" stroke="#000" stroke-width="9" fill="none" marker-end="url(#big)" marker-start="url(#bigs)"/>
+  <text x="828" y="560" font-size="26">Real-Time Synchronization</text>
+
+  <!-- Sync Module -> API : authorization -->
+  <path d="M605,720 L497,720" stroke="#000" stroke-width="11" fill="none" marker-end="url(#big)"/>
+  <text x="551" y="696" text-anchor="middle" font-size="19">Authorization</text>
+
+  <!-- API <-> Database : Access -->
+  <path d="M495,928 L578,928" stroke="#000" stroke-width="9" fill="none" marker-end="url(#big)"/>
+  <text x="537" y="904" text-anchor="middle" font-size="24">Access</text>
+
+  <!-- Sync Module -> GSD : Based on -->
+  <path d="M947,790 L1015,790" stroke="#000" stroke-width="11" fill="none" marker-end="url(#big)"/>
+  <text x="981" y="766" text-anchor="middle" font-size="18">Based on</text>
+
+  <!-- Modeling Client -> GSD : Based on (right loop) -->
+  <path d="M1338,300 L1372,300 L1372,730 L1335,730" stroke="#000" stroke-width="11" fill="none" marker-end="url(#big)"/>
+  <text x="1404" y="500" text-anchor="middle" font-size="26" transform="rotate(90 1404 500)">Based on</text>
+
+  <!-- Metamodeling Client + API Module -> GSD : Based on (left + bottom loop) -->
+  <path d="M63,200 L38,200 L38,1042 L1150,1042 L1150,1008" stroke="#000" stroke-width="11" fill="none" marker-end="url(#big)"/>
+  <text x="700" y="1032" text-anchor="middle" font-size="26">Based on</text>
+
+  <!-- API Module joins the same loop -->
+  <path d="M200,1008 L200,1042" stroke="#000" stroke-width="11" fill="none"/>
+</svg>
