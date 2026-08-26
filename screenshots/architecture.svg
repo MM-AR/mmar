@@ -69,7 +69,7 @@
   <!-- Database -->
   <path d="M110,650 a90,16 0 0 1 180,0 v40 a90,16 0 0 1 -180,0 z" fill="#f7f7f7" stroke="#111" stroke-width="2"/>
   <ellipse cx="200" cy="650" rx="90" ry="16" fill="#f7f7f7" stroke="#111" stroke-width="2"/>
-  <text x="200" y="683" text-anchor="middle" font-size="13">Database · PostgreSQL 16</text>
+  <text x="200" y="683" text-anchor="middle" font-size="13">Database · PostgreSQL</text>
 
   <!-- ================= Sync Server ================= -->
   <rect x="400" y="400" width="200" height="160" fill="#d9d9d9" stroke="#111" stroke-width="2"/>

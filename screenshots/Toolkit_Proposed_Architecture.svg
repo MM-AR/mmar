@@ -79,9 +79,9 @@
   <text x="1175" y="848" text-anchor="middle" font-size="23">Instance-Structure</text>
 
   <!-- ============ Database ============ -->
-  <path d="M585,928 v45 a115,22 0 0 0 230,0 v-45 z" fill="#f2f2f2" stroke="#000" stroke-width="4"/>
-  <ellipse cx="700" cy="928" rx="115" ry="22" fill="#f2f2f2" stroke="#000" stroke-width="4"/>
-  <text x="700" y="952" text-anchor="middle" font-size="24">Database</text>
+  <path d="M570,908 v72 a130,26 0 0 0 260,0 v-72 z" fill="#f2f2f2" stroke="#000" stroke-width="4"/>
+  <ellipse cx="700" cy="908" rx="130" ry="26" fill="#f2f2f2" stroke="#000" stroke-width="4"/>
+  <text x="700" y="968" text-anchor="middle" font-size="26">Database</text>
 
   <!-- ============ Arrows ============ -->
   <!-- Metamodeling Client -> API : Access -->
@@ -98,15 +98,12 @@
 
   <!-- Sync Module -> API : authorization -->
   <path d="M605,720 L497,720" stroke="#000" stroke-width="11" fill="none" marker-end="url(#big)"/>
-  <text x="551" y="696" text-anchor="middle" font-size="19">Authorization</text>
+  <text x="551" y="678" text-anchor="middle" font-size="17">Authentication &amp;</text>
+  <text x="551" y="700" text-anchor="middle" font-size="17">Authorization</text>
 
   <!-- API <-> Database : Access -->
-  <path d="M495,928 L578,928" stroke="#000" stroke-width="9" fill="none" marker-end="url(#big)"/>
-  <text x="537" y="904" text-anchor="middle" font-size="24">Access</text>
-
-  <!-- Sync Module -> GSD : Based on -->
-  <path d="M947,790 L1015,790" stroke="#000" stroke-width="11" fill="none" marker-end="url(#big)"/>
-  <text x="981" y="766" text-anchor="middle" font-size="18">Based on</text>
+  <path d="M495,950 L563,950" stroke="#000" stroke-width="9" fill="none" marker-end="url(#big)"/>
+  <text x="529" y="932" text-anchor="middle" font-size="24">Access</text>
 
   <!-- Modeling Client -> GSD : Based on (right loop) -->
   <path d="M1338,300 L1372,300 L1372,730 L1335,730" stroke="#000" stroke-width="11" fill="none" marker-end="url(#big)"/>
