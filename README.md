@@ -11,13 +11,10 @@
 5. [Installation Instructions](#5-installation-instructions)
    1. [Docker all in one Installation](#51-docker-all-in-one-installation)
    2. [Manual Installation](#52-manual-installation)
-   3. [Service Ports](#53-service-ports)
 6. [Additional Concepts](#6-additional-concepts)
    1. [VizRep Visual Language](#61-vizrep-visual-language)
    2. [Authentication](#62-authentication)
    3. [Expressions](#63-expressions)
-   4. [Real-Time Collaboration](#64-real-time-collaboration)
-   5. [Scene Sharing And Access Levels](#65-scene-sharing-and-access-levels)
 7. [Contribution](#7-contribution)
 8. [Authors](#8-authors)
 
