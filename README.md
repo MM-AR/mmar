@@ -1,4 +1,4 @@
-The frontend clients were originally developed in Aurelia 2 and have since been reimplemented in React. The previous documentation is preserved in the old README.
+The frontend clients were originally developed in Aurelia 2 and have since been reimplemented in React. The previous documentation is preserved in the [old README](OLD_README.md).
 
 # Table of Contents
 1. [License Information](#1-license-information)
@@ -89,18 +89,18 @@ The Figure below shows the specific structure of the modeling platform.
 - API Module: On top of the Database there is an API Module that can access the Database. The API Module exposes different endpoints that are globally accessible by other modules. Further, the API Module handles user authentication, controls data consistency, and checks for additional rules defined in the metamodels.
 - Metamodeling Client: The Metamodeling Client Module is also based on the Global Shared Datastructure and uses the exposed endpoints of the API Module to access, modify, or create metamodels.
 - Modeling Client: The Modeling Client Module, along with the Metamodeling Client Module, is based on the Global Shared Datastructure. It depends not only on the structure of instances, but also on the meta-structure, i.e., the meta-layer meta<sup>2</sup>-model. For modeling instances, previously defined metamodels are required as a basis. Such metamodels and instances are stored in the Database and can be retrieved to the client from the API Module. In addition, this flexible structure makes it possible to import metamodels and model instances directly as text files, independent of a database or API.
-- Sync Module: The Sync Module sits beside the API Module and keeps concurrent editing sessions of the same scene instance consistent. It does not own any data of its own — it derives its authorization from the API Module and its document model from the Global Shared Datastructure.
+- Sync Module: The Sync Module sits beside the API Module and keeps concurrent editing sessions of the same scene instance consistent. It does not own any data of its own: it derives its authorization from the API Module and relays the changes of a shared scene instance between the connected Modeling Clients. The mapping between the shared document and the Global Shared Datastructure is done in the Modeling Client, not in the Sync Module.
 
 ## Technology Stack:
-The implementation has been realized as a three-tier architecture system, encompassing a database server with PostgreSQL, an API server running as Node.js application and express, and client web servers running Node.js applications providing browser applications. For all the Node.js applications, we used TypeScript, a programming language that is strongly typed and builds on JavaScript, providing improved tooling at any scale.
+The implementation has been realized as a three-tier architecture system, encompassing a database server with PostgreSQL, an API server running as Node.js application and express, and client applications that run in the browser and are built with Vite. In addition, a sync server running as Node.js application provides the real-time collaboration. For the servers and the clients, we used TypeScript, a programming language that is strongly typed and builds on JavaScript, providing improved tooling at any scale.
 
-The client applications are built with **React 18**, bundled with **Vite**, styled with **MUI (Material UI)**, and hold their state in **Zustand** stores. Rendering uses the JavaScript WebGL visualization framework **THREE.js**, and VizRep definitions are authored in the **Monaco** editor. Immersive 2D/3D/AR interaction is provided through the **WebXR device API** in the modeling client.
+The client applications are built with **React**, bundled with **Vite**, styled with **MUI (Material UI)**, and hold their state in **Zustand** stores. Rendering uses the JavaScript WebGL visualization framework **THREE.js**, and VizRep definitions are authored in the **Monaco** editor. Immersive 2D/3D/AR interaction is provided through the **WebXR device API** in the modeling client.
 
-| --- | React clients | 
+| Aspect | React clients |
 |---|---|
-| UI framework | React 18 |
-| Build tooling Vite 5 |
-| Component library | MUI (Material UI) 5 + Emotion |
+| UI framework | React |
+| Build tooling | Vite |
+| Component library | MUI (Material UI) + Emotion |
 | State management | Zustand stores |
 | Tests | Vitest |
 
@@ -110,19 +110,19 @@ The client applications are built with **React 18**, bundled with **Vite**, styl
 
 
 
-- Database (https://github.com/gunakarchalla/mmar-database): The introduced meta<sup>2</sup>-model has been implemented in a PostgreSQL database (PostgreSQL 16). The database is divided into two schemas. The logging schema, which logs every transaction from the metamodeling platform, and the public schema, which holds all the data on the metamodels and model instances. The database not only stores the schema and data itself. It also stores functions for
+- Database (https://github.com/MM-AR/mmar-database): The introduced meta<sup>2</sup>-model has been implemented in a PostgreSQL database. The database is divided into two schemas. The logging schema, which records every change to metaobjects and instance objects as well as security events such as sign-ins, and the public schema, which holds all the data on the metamodels and model instances. The database not only stores the schema and data itself. It also stores functions for
 functionalities that cannot be done using data constraints.
-- Global Shared Datastructure (https://github.com/gunakarchalla/mmar-global-data-structure): The Global Shared Datastructure module is implemented as TypeScript class definitions. The module is not a running program, but only the definition of classes and implements the data structure according to the meta<sup>2</sup>-model. It is separated into two parts. The meta-layer and the instance-layer (see Figure below).
+- Global Shared Datastructure (https://github.com/MM-AR/mmar-global-data-structure): The Global Shared Datastructure module is implemented as TypeScript class definitions. The module is not a running program, but only the definition of classes and implements the data structure according to the meta<sup>2</sup>-model. It is separated into two parts. The meta-layer and the instance-layer (see Figure below).
 <div> <br> </div>
 <img src="screenshots/global_shared_datastructure_model.png"  width="600" style="display: block; margin: 0 auto;">
 <div> <br> </div>
 
-- API Server Module (https://github.com/gunakarchalla/mmar-server): The API server module is implemented as Node.js application using express. The module exposes REST (RESTful) API endpoints. This includes endpoints for POST, GET, PATCH, and DELETE functionalities. In addition, the module defines controller classes and
+- API Server Module (https://github.com/MM-AR/mmar-server): The API server module is implemented as Node.js application using express. The module exposes REST (RESTful) API endpoints. This includes endpoints for POST, GET, PATCH, and DELETE functionalities. In addition, the module defines controller classes and
 connection classes for writing to, and retrieving data from the database. The server module also implements middleware services for checking additional rules and for parsing the data into a JSON
 format that fits into the Global Shared Datastructure. 
-- Sync Server Module (https://github.com/gunakarchalla/mmar-sync-server): The Sync Server is a Node.js application that provides real-time collaboration for the Modeling Client. It hosts one Yjs room per shared scene instance over WebSocket and gates every connection with the same JWT the API server issues. It holds no database connection of its own: on connect it asks the API server for the user's access level on the requested scene instance and enforces it per message, so a `read` participant receives updates and awareness but cannot write.
-- Metamodeling Client (https://github.com/gunakarchalla/mmar-metamodeling-client-react): The Metamodeling Client is a client application that exposes a client website for defining metamodels. The UI of the application is built with React 18, MUI and Zustand, bundled with Vite. The purpose of the application is to create and manage metamodels, user rights, and additional rules, algorithms and mechanisms related to metamodels. It is a single-page, no-router application: navigation is driven by a singleton selection store plus a UI refresh signal. This client integrates the VizRep design workflow: the plain geometry text field of the General tab has been replaced by the Monaco-based VizRep editor with a Preview button and a live THREE.js preview window, for `Class`, `RelationClass` and `Port`. 
-- Modeling Client (https://github.com/gunakarchalla/mmar-modeling-client-react): The Modeling Client is a client application that exposes a client website for modeling. The purpose of the client application is to create visual conceptual models based on predefined metamodels. Users can interact with the client to create and manipulate visual conceptual models in traditional 2D and in 3D. The Modeling Client is based on the Global Shared Datastructure module. Thus, the client
+- Sync Server Module (https://github.com/MM-AR/mmar-sync-server): The Sync Server is a Node.js application that provides real-time collaboration for the Modeling Client. It hosts one Yjs room per shared scene instance over WebSocket and gates every connection with the same JWT the API server issues. It holds no database connection of its own: on connect it asks the API server for the user's access level on the requested scene instance and enforces it per message, so a `read` participant receives updates and awareness but cannot write.
+- Metamodeling Client (https://github.com/MM-AR/mmar-metamodeling-client): The Metamodeling Client is a client application that exposes a client website for defining metamodels. The UI of the application is built with React, MUI and Zustand, bundled with Vite. The purpose of the application is to create and manage metamodels, user rights, and additional rules, algorithms and mechanisms related to metamodels. It is a single-page, no-router application: navigation is driven by a singleton selection store plus a UI refresh signal. This client integrates the VizRep design workflow: the plain geometry text field of the General tab has been replaced by the Monaco-based VizRep editor with a Preview button and a live THREE.js preview window, for `Class`, `RelationClass` and `Port`. 
+- Modeling Client (https://github.com/MM-AR/mmar-modeling-client): The Modeling Client is a client application that exposes a client website for modeling. The purpose of the client application is to create visual conceptual models based on predefined metamodels. Users can interact with the client to create and manipulate visual conceptual models in traditional 2D and in 3D. The Modeling Client is based on the Global Shared Datastructure module. Thus, the client
 initializes the data structure in a global context and creates and stores metamodels and instance models locally in that data structure. The visualization of these instances in the modeler is independent of the instances of the Global Shared Datastructure. Thus, it should be noted that the modeler always instantiates two instances for each new instance of the Global Shared Datastructure. (1) The instance of the data structure itself, and (2) a graphical THREE.js instance of the 3D representation according to the VizRep definition defined in the metamodel (see [VizRep](https://github.com/MM-AR/mmar/wiki/VizRep)). The Figure below shows a screenshot of the Modeling Client and its components. 
 Real-time collaboration takes place in the Modeling Client. It is the only client that connects to the Sync Server: several users can open the same scene instance and edit it together, seeing each other's presence and selections. Collaboration therefore applies to the instance layer only.
 
@@ -133,7 +133,7 @@ Real-time collaboration takes place in the Modeling Client. It is the only clien
 <div> <br> </div>
 
 
-- Docker Installation (https://github.com/gunakarchalla/mmar-docker-installation): The orchestration project that clones every repository into a shared volume and brings the whole platform up with a single command. See [Section 5](#5-installation-instructions).
+- Docker Installation (https://github.com/MM-AR/mmar-docker-installation): The orchestration project that clones every repository into a shared volume and brings the whole platform up with a single command. See [Section 5](#5-installation-instructions).
 <div> <br> </div>
 
 For a detailed description of the original implementation refer to: 
@@ -143,13 +143,13 @@ For a detailed description of the original implementation refer to:
 
 | Repository | Stack | Role | Port |
 |---|---|---|---|
-| [mmar-database](https://github.com/gunakarchalla/mmar-database) | PostgreSQL 16 | Schema (`init.sql`), example metamodels, history/audit triggers | 5432 |
-| [mmar-global-data-structure](https://github.com/gunakarchalla/mmar-global-data-structure) | TypeScript, `class-transformer` | Shared meta<sup>2</sup>-model DTOs used by server and every client. No runtime of its own | — |
-| [mmar-server](https://github.com/gunakarchalla/mmar-server) | Express + TypeScript + `pg` | REST API, authentication, rule checking, access control | 8000 |
-| [mmar-sync-server](https://github.com/gunakarchalla/mmar-sync-server) | Node + Yjs + `ws` | Real-time collaboration for the modeling client, one Yjs room per scene instance | 8060 |
-| [mmar-metamodeling-client-react](https://github.com/gunakarchalla/mmar-metamodeling-client-react) | React 18 + Vite + MUI + Zustand | Metamodel design tool, with integrated VizRep editor | 8075 |
-| [mmar-modeling-client-react](https://github.com/gunakarchalla/mmar-modeling-client-react) | React 18 + Vite + MUI + Zustand | Modeling tool; the collaborative client | 8085 |
-| [mmar-docker-installation](https://github.com/gunakarchalla/mmar-docker-installation) | Docker Compose | One-command installation of the whole platform | — |
+| [mmar-database](https://github.com/MM-AR/mmar-database) | PostgreSQL | Schema (`init.sql`), example metamodels, history/audit triggers | 5432 |
+| [mmar-global-data-structure](https://github.com/MM-AR/mmar-global-data-structure) | TypeScript, `class-transformer` | Shared meta<sup>2</sup>-model DTOs used by server and every client. No runtime of its own | — |
+| [mmar-server](https://github.com/MM-AR/mmar-server) | Express + TypeScript + `pg` | REST API, authentication, rule checking, access control | 8000 |
+| [mmar-sync-server](https://github.com/MM-AR/mmar-sync-server) | Node + Yjs + `ws` | Real-time collaboration for the modeling client, one Yjs room per scene instance | 8060 |
+| [mmar-metamodeling-client](https://github.com/MM-AR/mmar-metamodeling-client) | React + Vite + MUI + Zustand | Metamodel design tool, with integrated VizRep editor | 8075 |
+| [mmar-modeling-client](https://github.com/MM-AR/mmar-modeling-client) | React + Vite + MUI + Zustand | Modeling tool; the collaborative client | 8085 |
+| [mmar-docker-installation](https://github.com/MM-AR/mmar-docker-installation) | Docker Compose | One-command installation of the whole platform | — |
 
 
 
@@ -157,7 +157,7 @@ For a detailed description of the original implementation refer to:
 In the following the different parts for installing a running production or development environment are described.
 
 ## 5.1 Docker all in one Installation
-To facilitate the installation of MMAR, you can install the entire environment in development or production mode via docker in a single script installation. We strongly recommend using this method for your installation, since installation problems can be minimized like that. For detailed instructions visit https://github.com/gunakarchalla/mmar-docker-installation
+To facilitate the installation of MMAR, you can install the entire environment in development or production mode via docker in a single script installation. We strongly recommend using this method for your installation, since installation problems can be minimized like that. For detailed instructions visit https://github.com/MM-AR/mmar-docker-installation
 
 
 ## 5.2 Manual Installation
@@ -188,22 +188,20 @@ The meta<sup>2</sup>-model allows to use expressions. A full specification of ex
 
 We welcome contributions! Please follow these steps:
 
-1. Fork the development branch of the repository you want to work on.
-2. Create a new branch (`git checkout -b feature/your-feature`).
+1. Fork the repository you want to work on.
+2. Create a new branch from the `develop` branch (`git checkout -b feature/your-feature develop`).
 3. Commit your changes (`git commit -am 'Add new feature'`).
 4. Push to the branch (`git push origin feature/your-feature`).
-5. Create a new Pull Request.
+5. Create a new Pull Request against the `develop` branch.
 
 Contributions must be documented to be merged into the project. If you contribute something to the project, please document the according changes into the Wiki, or the readme.
 
 # 8 Authors
-- Documentation: [Fabian Muff](https://www.unifr.ch/inf/digits/en/group/team/fabian-muff.html) | [Daniel Borcard](https://www.unifr.ch/inf/digits/en/group/team/daniel-borcard.html)
+- Documentation: [Fabian Muff](https://www.unifr.ch/inf/digits/en/group/team/fabian-muff.html) | [Daniel Borcard](https://www.unifr.ch/inf/digits/en/group/team/daniel-borcard.html) | [Gunakar Challa](https://www.unifr.ch/inf/digits/en/group/team/gunakar-challa.html) | [Naomi Feldmann](https://www.unifr.ch/inf/digits/en/group/team/naomi-feldmann.html)
 - Meta2Model: [Fabian Muff](https://www.unifr.ch/inf/digits/en/group/team/fabian-muff.html) | [Hans-Georg Fill](https://www.unifr.ch/inf/digits/en/group/team/fill.html) | [Daniel Borcard](https://www.unifr.ch/inf/digits/en/group/team/daniel-borcard.html)
-- Modeling Client: [Fabian Muff](https://www.unifr.ch/inf/digits/en/group/team/fabian-muff.html)
-- Metamodeling Client: [Daniel Borcard](https://www.unifr.ch/inf/digits/en/group/team/daniel-borcard.html)
-- VizRep Client: [Fabian Muff](https://www.unifr.ch/inf/digits/en/group/team/fabian-muff.html)
-- React Clients (Metamodeling incl. integrated VizRep editor, Modeling): [Gunakar Challa](https://www.unifr.ch/inf/digits/en/group/team/gunakar-challa.html)
+- Modeling Client: [Fabian Muff](https://www.unifr.ch/inf/digits/en/group/team/fabian-muff.html) | [Gunakar Challa](https://www.unifr.ch/inf/digits/en/group/team/gunakar-challa.html) | [Naomi Feldmann](https://www.unifr.ch/inf/digits/en/group/team/naomi-feldmann.html) | [Daniel Borcard](https://www.unifr.ch/inf/digits/en/group/team/daniel-borcard.html)
+- Metamodeling Client: [Daniel Borcard](https://www.unifr.ch/inf/digits/en/group/team/daniel-borcard.html) | [Gunakar Challa](https://www.unifr.ch/inf/digits/en/group/team/gunakar-challa.html) | [Naomi Feldmann](https://www.unifr.ch/inf/digits/en/group/team/naomi-feldmann.html)
 - Sync Server / Real-Time Collaboration: [Gunakar Challa](https://www.unifr.ch/inf/digits/en/group/team/gunakar-challa.html)
 - API: [Daniel Borcard](https://www.unifr.ch/inf/digits/en/group/team/daniel-borcard.html) | [Gunakar Challa](https://www.unifr.ch/inf/digits/en/group/team/gunakar-challa.html) | [Fabian Muff](https://www.unifr.ch/inf/digits/en/group/team/fabian-muff.html) 
 - GlobalSharedDatastructure: [Fabian Muff](https://www.unifr.ch/inf/digits/en/group/team/fabian-muff.html) | [Daniel Borcard](https://www.unifr.ch/inf/digits/en/group/team/daniel-borcard.html)
-- Docker Installation: [Fabian Muff](https://www.unifr.ch/inf/digits/en/group/team/fabian-muff.html)
+- Docker Installation: [Fabian Muff](https://www.unifr.ch/inf/digits/en/group/team/fabian-muff.html) | [Gunakar Challa](https://www.unifr.ch/inf/digits/en/group/team/gunakar-challa.html)
